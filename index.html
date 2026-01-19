@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nishanth S - Full-Stack Web Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #777;
+            --border-radius: 8px;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .profile-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 5px solid var(--secondary-color);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+            background-color: #fff;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .header-text h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header-text p {
+            font-size: 1.2rem;
+            color: var(--light-color);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .contact-item i {
+            color: var(--secondary-color);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .section-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+        
+        /* Education */
+        .education-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .education-item:last-child {
+            border-bottom: none;
+        }
+        
+        .education-item h3 {
+            color: var(--secondary-color);
+        }
+        
+        .date-location {
+            display: flex;
+            justify-content: space-between;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .skill-category {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skill-category h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--secondary-color);
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+        
+        .skill-tag {
+            background-color: #e8f4fc;
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        /* Projects */
+        .project-item {
+            margin-bottom: 2.5rem;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: #f8f9fa;
+            border-left: 5px solid var(--secondary-color);
+        }
+        
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .tech-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Training & Achievements */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .grid-item {
+            padding: 1.5rem;
+            background-color: #f8f9fa;
+            border-radius: var(--border-radius);
+            border-top: 4px solid var(--secondary-color);
+        }
+        
+        /* Summary */
+        .summary-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #444;
+        }
+        
+        /* Resume Image Section */
+        .resume-image-container {
+            margin: 2rem auto;
+            max-width: 800px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .resume-preview {
+            width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .resume-preview:hover {
+            transform: scale(1.02);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--border-radius);
+            margin: 0 auto;
+        }
+        
+        .image-placeholder i {
+            font-size: 4rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Button Styles */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.8rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Modal for Resume Image */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90vh;
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Contact Details in Footer */
+        .contact-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: var(--border-radius);
+        }
+        
+        .contact-detail-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+        
+        .contact-detail-item i {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            margin-top: 0.3rem;
+        }
+        
+        .contact-detail-item strong {
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        
+        .contact-detail-item a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-detail-item a:hover {
+            color: var(--secondary-color);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-text h1 {
+                font-size: 2rem;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.7rem;
+            }
+            
+            .skill-category {
+                min-width: 100%;
+            }
+            
+            .project-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            
+            .date-location {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .profile-img-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+        
+        .highlight {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+        
+        .download-section {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        .download-instructions {
+            margin-top: 1rem;
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        /* Navigation to Resume Section */
+        .resume-navigation {
+            margin-top: 1.5rem;
+        }
+        
+        .resume-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+        
+        .resume-link:hover {
+            color: #fff;
+            transform: translateX(5px);
+        }
+        
+        .resume-link i {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="profile-img-container">
+                <!-- Replace with your actual profile photo -->
+                <img src="D:\porfolio\nishanth.jpeg" 
+                     alt="Nishanth S Profile Photo" 
+                     class="profile-img"
+                     id="profilePhoto">
+            </div>
+            <div class="header-text">
+                <h1>Nishanth S</h1>
+                <p>Full-Stack Web Developer</p>
+                <p>Passionate about building efficient web applications with modern technologies</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>B.Sc (Information Technology)</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Pollachi, India</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-language"></i>
+                        <span>Tamil (Native), English (Intermediate)</span>
+                    </div>
+                </div>
+                <div class="resume-navigation">
+                    <a href="#resume-image" class="resume-link">
+                        <i class="fas fa-arrow-right"></i> View my resume below
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Summary Section -->
+    <section id="summary">
+        <div class="container">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="section-content">
+                <div class="summary-content">
+                    <p>Motivated Full-Stack Web Developer with hands-on experience in building responsive and user-friendly web applications using <span class="highlight">HTML, CSS, JavaScript, React.js, Node.js, Express.js, and MongoDB</span>.</p>
+                    <p>Strong understanding of front-end and back-end development, RESTful APIs, and database management. Developed real-world projects including a <span class="highlight">Truck Rental Agency Management System</span>, focusing on performance, scalability, and clean code.</p>
+                    <p>Passionate about learning new technologies and delivering efficient software solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="section-content">
+                <div class="education-item">
+                    <h3>B.Sc (Information Technology)</h3>
+                    <div class="date-location">
+                        <span><i class="far fa-calendar-alt"></i> 06/2023 - 04/2026</span>
+                        <span><i class="fas fa-university"></i> Sree Saraswathi Thyagaraja College</span>
+                    </div>
+                    <p>Currently pursuing undergraduate degree in Information Technology with focus on web development, programming, and software engineering.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="section-content">
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Frontend Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                           <span class="skill-tag">React.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Backend Technologies</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Express.js</span>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Database</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MongoDB</span>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Other Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Problem Solving</span>
+                            <span class="skill-tag">Communication</span>
+                            <span class="skill-tag">Adaptability</span>
+                            <span class="skill-tag">Time Management</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="section-content">
+                <div class="project-item">
+                    <div class="project-header">
+                        <h3>Truck Rental Website</h3>
+                        <div class="date-location">
+                            <span><i class="far fa-calendar-alt"></i> 10/2025 - 11/2025</span>
+                            <span><i class="fas fa-map-marker-alt"></i> Pollachi</span>
+                        </div>
+                    </div>
+                    <p>The Truck Rental Agency project is a web-based application designed to simplify and automate the process of renting trucks for transportation and logistics needs. The system allows users to browse available trucks, view details, check availability, and make booking requests online. An admin panel is included to manage trucks, bookings, users, and rental status efficiently.</p>
+                    <p>The front end of the application is developed using HTML, CSS, and JavaScript to create a responsive and user-friendly interface. Node.js is used on the server side to handle requests, manage business logic, and ensure smooth communication between the client and server. MongoDB serves as the database to store user information, truck details, bookings, and payment records securely.</p>
+                    <p>This project improves operational efficiency, reduces manual work, and provides a reliable digital platform for both customers and administrators in the truck rental business.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                    </div>
+                </div>
+                <p><strong>Key Achievement:</strong> Developed a complete Truck Rental Management System using full-stack technologies.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training & Achievements Section -->
+    <section id="training">
+        <div class="container">
+            <h2 class="section-title">Training & Achievements</h2>
+            <div class="section-content">
+                <div class="grid-container">
+                    <div class="grid-item">
+                        <h3>Training / Courses</h3>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Python in Excel</li>
+                            <li>Full-Stack Deep Learning with Python</li>
+                            <li>Introduction to Web Design and Development</li>
+                            <li>Cloud Computing and Distributed Systems</li>
+                             <li>UI/UX Design</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <h3>Key Achievements</h3>
+                        <p style="margin-top: 0.5rem;">Participated in Code Debugging, Quiz, Connexion events in other colleges.</p>
+                    </div>
+                    
+                    <div class="grid-item">
+                        <h3>Strengths</h3>
+                        <p style="margin-top: 0.5rem;">Easy to learn and time management. Able to quickly learn new skills and complete work on time with efficiency.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Image Section -->
+    <section id="resume-image">
+        <div class="container">
+            <h2 class="section-title">Resume</h2>
+            <div class="section-content">
+                <p>View my resume below. You can click on the image to enlarge it or download a copy using the button.</p>
+                
+                <div class="resume-image-container">
+                    <!-- Resume Image Display -->
+                    <img src="NishanthSResume_page-0001.jpg" 
+                         alt="Nishanth S Resume" 
+                         class="resume-preview"
+                         id="resumeImage"
+                         onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/f8f9fa/2c3e50?text=Resume+Image+Placeholder'; this.alt='Resume Image Placeholder - Add your resume image file named resume-image.jpg in the same directory';">
+                </div>
+                
+                <div class="download-section">
+                    <h3>Download Resume</h3>
+                    <p>Click the button below to download my resume in PDF format.</p>
+                    <div class="action-buttons">
+                        <button id="downloadResumeBtn" class="btn btn-secondary">
+                            <i class="fas fa-download"></i> Download Resume (PDF)
+                        </button>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Full Screen Resume View -->
+    <div id="resumeModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImg" class="modal-img" src="" alt="Full Screen Resume">
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <h2>Get In Touch</h2>
+            <p>Interested in collaborating or have a project in mind? Feel free to reach out!</p>
+            
+            <div class="contact-details">
+                <div class="contact-detail-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong>
+                        <p><a href="mail:nishanthrocky1111@gmail.com">nishanthrocky1111@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-detail-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <strong>Phone</strong>
+                        <p><a href="tel:+919994245110">+91 9994245110</a></p>
+                    </div>
+                </div>
+                <div class="contact-detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <strong>Location</strong>
+                        <p>Pollachi, Tamil Nadu, India</p>
+                    </div>
+                </div>
+                <div class="contact-detail-item">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <strong>LinkedIn</strong>
+                        <p><a href="https://www.linkedin.com/in/nishanth-s-a49215276">Connect with me</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nishanth-s-a49215276" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/nishanthrocky1111-rgb" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mail:nishanthrocky1111@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>&copy; 2023 Nishanth S. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Download Resume PDF Button
+        document.getElementById('downloadResumeBtn').addEventListener('click', function() {
+            // Create a temporary link element
+            const link = document.createElement('a');
+            
+            // You can replace this with your actual PDF file path
+            const resumePdfPath = 'NishanthS_Resume.pdf'; // Change to your actual PDF filename
+            
+            // Set the download attributes
+            link.href = resumePdfPath;
+            link.download = 'NishanthS_Resume.pdf';
+            
+            // Append to body, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Show helpful message after a short delay
+            setTimeout(() => {
+                alert('📥 Resume download initiated!\n\n⚠️ If the download didn\'t start:\n1. Make sure you have a file named "NishanthS_Resume.pdf"\n2. Place it in the same folder as this HTML file\n3. Try clicking the button again\n\nNeed help? Check the console for more details.');
+            }, 500);
+        });
+        
+        // Close modal when clicking X
+        document.querySelector('.close-modal').addEventListener('click', function() {
+            modal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside the image
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+        
+        // Profile Photo Upload Simulation
+        const profilePhoto = document.getElementById('profilePhoto');
+        
+        // This is a simulation - in a real app, you'd have file upload functionality
+        profilePhoto.addEventListener('click', function() {
+            if (confirm('In a real application, this would open a file upload dialog. For now, we\'ll change to a different placeholder image. Proceed?')) {
+                // Cycle through different placeholder images
+                const colors = ['3498db', 'e74c3c', '2ecc71', '9b59b6', '1abc9c'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                profilePhoto.src = `https://via.placeholder.com/180x180/${randomColor}/ffffff?text=Nishanth+S`;
+            }
+        });
+        
+        // Instructions for setting up actual images
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('To set up your portfolio with actual images:');
+            console.log('1. Place your profile photo in the same directory as this HTML file');
+            console.log('2. Rename it to "profile-photo.jpg" or update the src attribute in line 176');
+            console.log('3. Place your resume image as "resume-image.jpg" in the same directory');
+            console.log('4. Place your resume PDF as "NishanthS_Resume.pdf" in the same directory');
+        });
+    </script>
+</body>
+</html>
